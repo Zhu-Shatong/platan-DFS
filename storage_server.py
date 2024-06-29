@@ -68,6 +68,15 @@ class StorageServer:
                                 client_socket.send(chunk)
             else:
                 client_socket.send("NOT_FOUND".encode('utf-8'))
+
+        elif command.startswith("DELETE_BLOCK"):
+            block_file = os.path.join(self.storage_path, block_id)
+            if os.path.exists(block_file):
+                os.remove(block_file)
+                client_socket.send("DELETED".encode('utf-8'))
+            else:
+                client_socket.send("NOT_FOUND".encode('utf-8'))
+
         client_socket.close()
 
     def send_heartbeat(self):

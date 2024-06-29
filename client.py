@@ -130,6 +130,37 @@ class Client:
 
         print("File retrieved successfully.")
 
+    def delete_file(self, filename):
+        """_summary_    删除文件
+
+        Args:
+            filename (_type_): 文件名
+        """
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client.connect(self.master_address)
+
+        # 发送删除请求
+        client.send(f"DELETE::{filename}::".encode('utf-8'))
+        response = client.recv(40960).decode('utf-8')
+        block_info = json.loads(response)  # 解析块索引
+        ###
+        client.close()
+
+        for block in block_info['blocks']:
+            block_id = block['blockID']
+            primary = block['primary']
+            print(
+                f"Deleting block {block_id} from {primary['host']}:{primary['port']}")
+
+            self.delete_block(
+                primary['host'], primary['port'], filename,  block_id)
+
+            for replica in block['replica']:
+                self.delete_block(
+                    replica['host'], replica['port'], filename, block_id)
+
+        print("File deleted successfully.")
+
     def store_block(self, server_host, server_port, filename, block_id, block_data):
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.connect((server_host, server_port))
@@ -176,9 +207,19 @@ class Client:
         client.close()
         return block_data
 
+    def delete_block(self, server_host, server_port, filename, block_id):
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client.connect((server_host, server_port))
+        client.send(
+            f"DELETE_BLOCK::{filename}_block_{block_id}".encode('utf-8'))
+        response = client.recv(1024).decode('utf-8')
+
+        return
+
 
 if __name__ == "__main__":
 
     client = Client()
-    # client.store_file('1.mp4')
-    client.retrieve_file('1.mp4')
+    # client.store_file('1.rar')
+    # client.retrieve_file('1.pdf')
+    # client.delete_file('1.rar')

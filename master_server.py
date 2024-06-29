@@ -4,10 +4,11 @@ import time
 import configparser
 import random
 import json
+import os
 
 
 class MasterServer:
-    def __init__(self, host, port, config_file='servers.conf'):
+    def __init__(self, host, port, config_file='servers.conf', metadata_file='metadata.json'):
         """_summary_: Master服务器类
 
         Args:
@@ -17,12 +18,13 @@ class MasterServer:
         self.server_address = (host, port)  # Master服务器地址
         self.servers = self.load_servers(config_file)
 
-        self.metadata = {"fileMetadata": []}
+        self.metadata_file = metadata_file
+        self.metadata = self.metadata = self.load_metadata()
 
         self.heartbeat_timeout = 10  # 心跳检查间隔
         self.server_status = {server: True for server in self.servers}  # 健康状态
         self.last_heartbeat = {server: time.time() for server in self.servers}
-        
+
     def _parse_server_address(self, server):
         host, port = server.split(':')
         return {"host": host, "port": int(port)}
@@ -31,6 +33,17 @@ class MasterServer:
         config = configparser.ConfigParser()
         config.read(config_file)
         return [address for address in config['servers'].values()]
+
+    def load_metadata(self):
+        if os.path.exists(self.metadata_file):
+            with open(self.metadata_file, 'r') as f:
+                return json.load(f)
+        else:
+            return {"fileMetadata": []}
+
+    def save_metadata(self):
+        with open(self.metadata_file, 'w') as f:
+            json.dump(self.metadata, f, indent=4)
 
     def heartbeat_check(self):
         """_summary_    心跳检查
@@ -72,6 +85,7 @@ class MasterServer:
                 file_info["blocks"].append(block_info)
 
             self.metadata["fileMetadata"].append(file_info)
+            self.save_metadata()  # 保存到文件
 
             print(self.metadata)
 
@@ -82,6 +96,18 @@ class MasterServer:
                 (file_meta for file_meta in self.metadata["fileMetadata"] if file_meta["fileID"] == filename), None)
             if file_info:
                 client_socket.send(json.dumps(file_info).encode('utf-8'))
+            else:
+                client_socket.send(json.dumps(
+                    {"error": "File not found"}).encode('utf-8'))
+
+        elif command == 'DELETE':
+            file_info = next(
+                (file_meta for file_meta in self.metadata["fileMetadata"] if file_meta["fileID"] == filename), None)
+            if file_info:
+                client_socket.send(json.dumps(file_info).encode('utf-8'))
+                # 删除metadata中的文件信息
+                self.metadata["fileMetadata"].remove(file_info)
+                self.save_metadata()  # 保存到文件
             else:
                 client_socket.send(json.dumps(
                     {"error": "File not found"}).encode('utf-8'))

@@ -2,6 +2,8 @@ import socket
 import threading
 import time
 import configparser
+import random
+import json
 
 
 class MasterServer:
@@ -13,11 +15,17 @@ class MasterServer:
             port (int, optional):   主服务器端口. Defaults to 5000.
         """
         self.server_address = (host, port)  # Master服务器地址
-        self.block_index = {}  # 块索引
         self.servers = self.load_servers(config_file)
+
+        self.metadata = {"fileMetadata": []}
+
         self.heartbeat_timeout = 10  # 心跳检查间隔
         self.server_status = {server: True for server in self.servers}  # 健康状态
         self.last_heartbeat = {server: time.time() for server in self.servers}
+        
+    def _parse_server_address(self, server):
+        host, port = server.split(':')
+        return {"host": host, "port": int(port)}
 
     def load_servers(self, config_file):
         config = configparser.ConfigParser()
@@ -41,42 +49,51 @@ class MasterServer:
         Args:
             client_socket (_type_): 客户端套接字
         """
-        request = client_socket.recv(1024).decode()
-        command, *params = request.split('::')
+        request = client_socket.recv(40960).decode('utf-8')
+        command, filename, *args = request.split('::')
 
         if command == 'STORE':
-            filename, data = params
-            block_ids = self.store_file(filename, data)
-            client_socket.send(block_ids.encode())
+            num_blocks = int(args[0])
+
+            file_info = {
+                "fileID": filename,
+                "blocks": []
+            }
+
+            for block_id in range(num_blocks):
+                primary = random.choice(self.servers)
+                replica = random.choice(
+                    [server for server in self.servers if server != primary])
+                block_info = {
+                    "blockID": block_id,
+                    "primary": self._parse_server_address(primary),
+                    "replica": [self._parse_server_address(replica)]
+                }
+                file_info["blocks"].append(block_info)
+
+            self.metadata["fileMetadata"].append(file_info)
+
+            print(self.metadata)
+
+            client_socket.send(json.dumps(file_info).encode('utf-8'))
+
         elif command == 'RETRIEVE':
-            filename, blank = params
-            blocks = self.retrieve_file(filename)
-            client_socket.send(blocks.encode())
+            file_info = next(
+                (file_meta for file_meta in self.metadata["fileMetadata"] if file_meta["fileID"] == filename), None)
+            if file_info:
+                client_socket.send(json.dumps(file_info).encode('utf-8'))
+            else:
+                client_socket.send(json.dumps(
+                    {"error": "File not found"}).encode('utf-8'))
+
         elif command == 'HEARTBEAT':
-            host, port = params
+            host = filename
+            port = int(args[0])
             server_address = f"{host}:{port}"
             self.server_status[server_address] = True
             self.last_heartbeat[server_address] = time.time()
 
         client_socket.close()
-
-    def store_file(self, filename, data):
-        blocks = [data[i:i+1024] for i in range(0, len(data), 1024)]  # 将文件分块
-        block_ids = []
-
-        for i, block in enumerate(blocks):  # 存储块
-            server_addresses = [self.servers[j %
-                                             len(self.servers)] for j in range(i, i+3)]  # 3副本
-            block_id = f"{filename}_block_{i}"
-            block_ids.append((block_id, server_addresses))
-            self.block_index[block_id] = server_addresses
-
-        return str(block_ids)
-
-    def retrieve_file(self, filename):
-        blocks = [block for block in self.block_index.keys()
-                  if block.startswith(filename)]
-        return str(blocks)
 
     def start(self):
         heartbeat_thread = threading.Thread(target=self.heartbeat_check)

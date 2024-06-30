@@ -1,3 +1,1054 @@
 {
-    "fileMetadata": []
+    "fileMetadata": [
+        {
+            "fileID": "python_web.zip",
+            "blocks": [
+                {
+                    "blockID": 0,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 1,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 2,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 3,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 4,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 5,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 6,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 7,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 8,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 9,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 10,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 11,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 12,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 13,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 14,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 15,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 16,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 17,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 18,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 19,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 20,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 21,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 22,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 23,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 24,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 25,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 26,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 27,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 28,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 29,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 30,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5004
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 31,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 32,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 33,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 34,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 35,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 36,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 37,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 38,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                },
+                {
+                    "blockID": 39,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5004
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "fileID": "1.zip",
+            "blocks": [
+                {
+                    "blockID": 0,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 1,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 2,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 3,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 4,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 5,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 6,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 7,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 8,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 9,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 10,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 11,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 12,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 13,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 14,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 15,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 16,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 17,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 18,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 19,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 20,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 21,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 22,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 23,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 24,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 25,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 26,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 27,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 28,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 29,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 30,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 31,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 32,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 33,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 34,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 35,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                },
+                {
+                    "blockID": 36,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 37,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5001
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5003
+                        }
+                    ]
+                },
+                {
+                    "blockID": 38,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5003
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5002
+                        }
+                    ]
+                },
+                {
+                    "blockID": 39,
+                    "primary": {
+                        "host": "localhost",
+                        "port": 5002
+                    },
+                    "replica": [
+                        {
+                            "host": "localhost",
+                            "port": 5001
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }

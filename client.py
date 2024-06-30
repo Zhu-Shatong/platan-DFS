@@ -5,7 +5,20 @@ import json
 
 
 class FileSplitter:
+    # 文件分割器
     def split_file(self, filename, block_size=1024*1024):
+        """_summary_    分割文件
+
+        Args:
+            filename (_type_):  文件名
+            block_size (_type_, optional):  块大小. Defaults to 1024*1024.
+
+        Raises:
+            FileNotFoundError:  文件不存在
+
+        Yields:
+            _type_:     文件块
+        """
         if not os.path.isfile(filename):
             raise FileNotFoundError(f"The file {filename} does not exist.")
 
@@ -14,7 +27,7 @@ class FileSplitter:
                 block = file.read(block_size)
                 if not block:
                     break
-                yield block
+                yield block # 生成器
 
     def get_number_of_blocks(self, filename, block_size=1024*1024):
         file_size = os.path.getsize(filename)
@@ -31,6 +44,41 @@ class Client:
         """
         self.master_address = (master_host, master_port)  # Master服务器地址
 
+    def get_master_file_namespace(self):
+        """_summary_    获取Master服务器文件命名空间
+
+        Returns:
+            _type_:    文件命名空间 list
+        """
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client.connect(self.master_address)
+
+        # 发送获取文件空间请求
+        client.send("GET_FILE_NAMESPACE::tmp::tmp".encode('utf-8'))
+        response = client.recv(40960).decode('utf-8')
+        file_space = json.loads(response)  # 解析文件空间
+
+        client.close()
+
+        return file_space
+
+    def get_storage_servers_status(self):
+        """_summary_    获取存储服务器状态
+
+        Returns:
+            _type_:   存储服务器状态 dict
+        """
+        client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client.connect(self.master_address)
+
+        # 发送获取文件空间请求
+        client.send("GET_STORAGE_SERVERS_STATUS::tmp::tmp".encode('utf-8'))
+        response = client.recv(40960).decode('utf-8')
+        status = json.loads(response)  # 解析文件空间
+        client.close()
+
+        return status
+
     def store_file(self, filename):
         """_summary_    存储文件
 
@@ -38,7 +86,6 @@ class Client:
             filename (_type_):  文件名
             data (_type_):  文件内容
         """
-
         splitter = FileSplitter()
         try:
             number_of_blocks = splitter.get_number_of_blocks(filename)
@@ -57,7 +104,6 @@ class Client:
         block_info = json.loads(response)  # 解析块索引
 
         print(block_info)
-        ###
 
         client.close()  # 关闭连接
 
@@ -95,7 +141,6 @@ class Client:
         client.send(f"RETRIEVE::{filename}::".encode('utf-8'))
         response = client.recv(40960).decode('utf-8')
         block_info = json.loads(response)  # 解析块索引
-        ###
 
         client.close()
 
@@ -139,11 +184,10 @@ class Client:
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.connect(self.master_address)
 
-        # 发送删除请求
         client.send(f"DELETE::{filename}::".encode('utf-8'))
         response = client.recv(40960).decode('utf-8')
         block_info = json.loads(response)  # 解析块索引
-        ###
+
         client.close()
 
         for block in block_info['blocks']:
@@ -220,6 +264,12 @@ class Client:
 if __name__ == "__main__":
 
     client = Client()
-    # client.store_file('1.rar')
-    # client.retrieve_file('1.pdf')
-    # client.delete_file('1.rar')
+    # client.store_file('1.pptx')  # 存储文件到DFS
+    # client.retrieve_file('1.pdf') # 下载文件
+    # client.delete_file('1.rar')   # 删除文件在DFS的内容
+
+    # 获取所有已存储文件名 # ['1.pdf', '1.rar', '1.pptx']
+    # print(client.get_master_file_namespace())
+
+    # 获取存储服务器状态 # {'localhost:5001': True, 'localhost:5002': True, 'localhost:5003': True, 'localhost:5004': True}
+    # print(client.get_storage_servers_status())

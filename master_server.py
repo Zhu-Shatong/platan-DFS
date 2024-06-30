@@ -74,9 +74,9 @@ class MasterServer:
             }
 
             for block_id in range(num_blocks):
-                primary = random.choice(self.servers)
-                replica = random.choice(
-                    [server for server in self.servers if server != primary])
+                healthy_servers = [server for server in self.servers if self.server_status[server]]
+                primary = random.choice(healthy_servers)
+                replica = random.choice([server for server in healthy_servers if server != primary])
                 block_info = {
                     "blockID": block_id,
                     "primary": self._parse_server_address(primary),
@@ -84,12 +84,10 @@ class MasterServer:
                 }
                 file_info["blocks"].append(block_info)
 
+            client_socket.send(json.dumps(file_info).encode('utf-8'))
+            
             self.metadata["fileMetadata"].append(file_info)
             self.save_metadata()  # 保存到文件
-
-            print(self.metadata)
-
-            client_socket.send(json.dumps(file_info).encode('utf-8'))
 
         elif command == 'RETRIEVE':
             file_info = next(
@@ -111,6 +109,14 @@ class MasterServer:
             else:
                 client_socket.send(json.dumps(
                     {"error": "File not found"}).encode('utf-8'))
+
+        elif command == 'GET_FILE_NAMESPACE':
+            # 返回所有的文件名
+            files = [file["fileID"] for file in self.metadata["fileMetadata"]]
+            client_socket.send(json.dumps(files).encode('utf-8'))
+            
+        elif command == 'GET_STORAGE_SERVERS_STATUS':
+            client_socket.send(json.dumps(self.server_status).encode('utf-8'))
 
         elif command == 'HEARTBEAT':
             host = filename
